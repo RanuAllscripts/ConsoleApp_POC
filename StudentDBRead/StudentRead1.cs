@@ -39,7 +39,7 @@ namespace StudentDBRead1
                     {
                         Console.WriteLine("Roll: {0}\nName: {1}\nGender: {2}\nDOB: {3}\n", reader["Roll"], reader["Name"], reader["Gender"], reader["DOB"]);
                     }
-                }//it is disposed
+                }
 
             }
 
