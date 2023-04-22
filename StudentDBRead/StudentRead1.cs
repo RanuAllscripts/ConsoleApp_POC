@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System.Data;
+using System.Data.SqlClient;
 
 namespace StudentDBRead1
 {
@@ -21,24 +22,49 @@ namespace StudentDBRead1
                 connection.Open();
 
                 //ADO.Net
-                string cmd = $"SELECT * FROM Student WHERE Roll = {Id}";
+                //string cmd = $"SELECT * FROM Student WHERE Roll = {Id}";
                 
                 // Create a new SqlCommand object to execute a query
-                SqlCommand command = new SqlCommand(cmd, connection);
+                SqlCommand command = new SqlCommand("GetStudentByRoll",connection);
 
-                command.CommandType = System.Data.CommandType.Text;
-                //command.Parameters =  // this is list
+                command.CommandType = CommandType.StoredProcedure; //to call storedprocedure
+
+                SqlParameter parameter = new SqlParameter("@Roll", SqlDbType.Int);
+                parameter.Value = Id;
+                command.Parameters.Add(parameter); // this is list
+
                 //another way is this -> SqlCommand command = new SqlCommand($"SELECT * FROM Student WHERE Roll = {Id}", connection);
                 // It Doesn't Works -> SqlCommand command = new SqlCommand("SELECT * FROM Student WHERE Roll = ${Id}", connection);
 
                 // Execute the query and get a SqlDataReader object to read the results
-                using (SqlDataReader reader = command.ExecuteReader())
+                /*using (SqlDataReader reader = command.ExecuteReader())
                 {
                     // Loop through the results and display each student's details to the console
                     while (reader.Read())
                     {
                         Console.WriteLine("Roll: {0}\nName: {1}\nGender: {2}\nDOB: {3}\n", reader["Roll"], reader["Name"], reader["Gender"], reader["DOB"]);
-                    } //
+                    }
+                }
+                */
+
+                //Alternative of using
+
+                SqlDataReader reader = null;
+                try
+                {
+                    reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Console.WriteLine("Roll: {0}\nName: {1}\nGender: {2}\nDOB: {3}\n", reader["Roll"], reader["Name"], reader["Gender"], reader["DOB"]);
+                    }
+                }
+                finally
+                {
+                    if (reader != null)
+                    {
+
+                        reader.Dispose();
+                    }
                 }
 
             }
