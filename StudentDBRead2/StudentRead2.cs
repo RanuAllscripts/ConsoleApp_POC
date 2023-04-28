@@ -6,13 +6,13 @@ namespace StudentDBRead2
 {
     public class StudentRead2
     {
-        public static void GetStudentDetails(int Id)
+        public static void GetStudentDetails(int rollNo)
         
         {
             using(var results = new StudentContext())
             {
-                var stud = results.Student.Where(x => x.Roll == Id).FirstOrDefault(); 
-                
+                var stud = results.Student.Where(x => x.RNo == rollNo).FirstOrDefault();
+
                 Console.WriteLine("Name: {0} \nGender: {1} \nDOB: {2}", stud.Name, stud.Gender, stud.DOB.ToShortDateString());
                 
             }

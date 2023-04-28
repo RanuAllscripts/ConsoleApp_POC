@@ -17,16 +17,18 @@ namespace StudentDBRead1
 
             // Create a new SqlConnection object using the connection string
             using (SqlConnection connection = new SqlConnection(connectionString))
-            { 
+            {
                 // Open the connection to the database -> use db
                 connection.Open();
 
                 //ADO.Net
                 //string cmd = $"SELECT * FROM Student WHERE Roll = {Id}";
-                
-                // Create a new SqlCommand object to execute a query
-                SqlCommand command = new SqlCommand("GetStudentByRoll",connection);
 
+                // Create a new SqlCommand object to execute a query
+                //SqlCommand command = new SqlCommand(cmd, connection);
+                SqlCommand command = new SqlCommand("GetStudentByRoll", connection);
+
+               
                 command.CommandType = CommandType.StoredProcedure; //to call storedprocedure
 
                 SqlParameter parameter = new SqlParameter("@Roll", SqlDbType.Int);
@@ -72,3 +74,4 @@ namespace StudentDBRead1
         }
     }
 }
+

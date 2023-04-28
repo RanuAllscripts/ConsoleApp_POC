@@ -8,8 +8,8 @@ namespace StudentMainConsole
     {
         public static void Main(String[] args)
         {
-            Console.WriteLine("1. Method 1");
-            Console.WriteLine("2. Method 2");
+            Console.WriteLine("1. Method 1 - ADO.NET");
+            Console.WriteLine("2. Method 2 - EF Core");
             Console.WriteLine("3. Method 3");
             Console.WriteLine("4. Exit");
             Console.WriteLine("Enter Your Choice");
