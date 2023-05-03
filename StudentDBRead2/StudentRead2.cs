@@ -11,7 +11,7 @@ namespace StudentDBRead2
         {
             using(var results = new StudentContext())
             {
-                var stud = results.Student.Where(x => x.RNo == rollNo).FirstOrDefault();
+                var stud = results.Student.Where(x => x.RNo == rollNo).FirstOrDefault(); //data in results in runtime
 
                 Console.WriteLine("Name: {0} \nGender: {1} \nDOB: {2}", stud.Name, stud.Gender, stud.DOB.ToShortDateString());
                 

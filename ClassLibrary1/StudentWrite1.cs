@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Reflection.Metadata.Ecma335;
 
 namespace StudentWriteDB
 {
@@ -27,22 +28,22 @@ namespace StudentWriteDB
                     int studRoll = int.Parse(input);
                     Console.WriteLine("Enter Student Name");
                     string studName = Console.ReadLine();
-
-                    if(studName == null || studName == "")
+                    
+                    if(string.IsNullOrEmpty(studName))
                     {
                         Console.WriteLine("Name is Required");
                         return;
                     }
 
-                    Console.WriteLine("Enter Student Gender");
-                    string studGender = Console.ReadLine();
+                    Console.WriteLine("Enter Student Gender Male/Female");
+                    string studGender = ValidateGender();
+                    
 
-                    if (studGender == null || studName == "")
+
+                    if(string.IsNullOrEmpty(studGender))
                     {
-                        Console.WriteLine("Gender is Required");
                         return;
                     }
-
                     Console.WriteLine("Enter Student DOB year/month/day");
 
                     /*Console.Write("Enter a month: ");
@@ -55,7 +56,7 @@ namespace StudentWriteDB
                     */
                     // DateTime studBirthday = new DateTime(day, month, year); //Year, Month, and Day parameters describe an un-representable DateTime.
 
-
+                   
                     //Another way for Date
                     DateTime studBirthday = DateTime.Parse(Console.ReadLine()); 
 
@@ -68,6 +69,7 @@ namespace StudentWriteDB
                     command.Parameters.AddWithValue("@value4", studBirthday);
                     //try with sqlParameter
                     command.ExecuteNonQuery();
+                    Console.WriteLine("Student Details Added Successfully!!");
 
                 }
             }
@@ -77,6 +79,29 @@ namespace StudentWriteDB
             }
             
            
+        }
+
+        public static string ValidateGender()
+        {
+            string studGender;
+            bool isValid = false;
+            string gender = string.Empty;
+            do
+            {
+                studGender = Console.ReadLine();
+                if (studGender.Equals("Male") || studGender.Equals("Female"))
+                {
+                    isValid = true;
+                    gender = studGender;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Input Gender should be Male/Female");
+                    //break;
+                }
+            }while (isValid);
+            return gender; 
         }
         public static void UpdateStudentDetails()
         {

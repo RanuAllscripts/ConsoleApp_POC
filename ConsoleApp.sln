@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentMainWriteDB", "Stude
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentWriteDB", "ClassLibrary1\StudentWriteDB.csproj", "{23C70FFB-8DA5-4721-9F9B-B167D5290660}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectionStringClass", "ConnectionStringClass\ConnectionStringClass.csproj", "{1AF60F69-E8E8-44FB-BFEC-70D95D13E23F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectionStringClass", "ConnectionStringClass\ConnectionStringClass.csproj", "{1AF60F69-E8E8-44FB-BFEC-70D95D13E23F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
