@@ -16,28 +16,44 @@ namespace StudentMainConsole
 
             string inp = Console.ReadLine();
             int ch = Convert.ToInt32(inp);
-            switch(ch)
+
+            bool repeat = true;
+            while (repeat)
             {
-                    case 1: Console.WriteLine("Enter Student Roll Number");
-                            string Input = Console.ReadLine();
-                            int Id = Convert.ToInt32(Input);
-                            StudentRead1.GetStudent(Id);
-                            break;
+                switch (ch)
+                {
+                    case 1:
+                        Console.WriteLine("Enter Student Roll Number");
+                        string Input = Console.ReadLine();
+                        int Id = Convert.ToInt32(Input);
+                        StudentRead1.GetStudent(Id);
+                        break;
 
-                    case 2: Console.WriteLine("Enter Student Roll Number");
-                            string Input1 = Console.ReadLine();
-                            int studentRoll = Convert.ToInt32(Input1);
-                            StudentRead2.GetStudentDetails(studentRoll);
-                            break;
+                    case 2:
+                        Console.WriteLine("Enter Student Roll Number");
+                        string Input1 = Console.ReadLine();
+                        int studentRoll = Convert.ToInt32(Input1);
+                        StudentRead2.GetStudentDetails(studentRoll);
+                        break;
 
-                    case 3:Console.WriteLine("Enter Student Roll Number");
-                           var RollNo = int.Parse(Console.ReadLine());
-                           StudnetRead3.GetStudentDetail(RollNo);
-                            break;
+                    case 3:
+                        Console.WriteLine("Enter Student Roll Number");
+                        var RollNo = int.Parse(Console.ReadLine());
+                        StudnetRead3.GetStudentDetail(RollNo);
+                        break;
 
-                    default: Console.WriteLine("Exiting........."); 
-                            break;
+                    default:
+                        Console.WriteLine("Exiting.........");
+                        break;
+                }
+                Console.WriteLine("Do you want to repeat the switch case (Y/N): ");
+                string ans = Console.ReadLine();
+                if(ans.ToUpper() != "Y")
+                {
+                    repeat = false;
+                }
             }
+            
             
         }
     }

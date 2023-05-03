@@ -18,11 +18,11 @@ namespace StudentDBRead2.Model
         [MinLength(3,ErrorMessage ="Name Shouldn't be less than 3 letters")]
         [MaxLength(50, ErrorMessage = "Name Shouldn't be More than 50 letters")]*/
 
-        [Required]
-        public string Name { get; set; }
+        //[Required]
+        public string? Name { get; set; } // ?, :?, .?/?.
 
         //[Required(ErrorMessage = "Gender Field is Required")]
-        public GenderOPtions Gender { get; set; }
+        public string Gender { get; set; }
 
         //[Required(ErrorMessage = "DOB Field is Required")]
         //[Range(typeof(DateTime),"1/1/1800","{0}", ErrorMessage = "Please Enter Valid Date")] //here {0} represnets date till today it will take current date at runtim
